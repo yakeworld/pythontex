@@ -1,21 +1,10 @@
-%!TEX TS-program = Arara
-% arara: pdflatex
-% arara: pythontex
-% arara: pdflatex
-\documentclass[12pt]{scrartcl}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb}
-\usepackage{fullpage}
+\documentclass[11pt]{article}
+\usepackage[UTF8]{ctex}
 \usepackage{graphicx}
-\usepackage[svgnames]{xcolor}
-\usepackage{url}
-\urlstyle{same}
-
 \usepackage[makestderr]{pythontex}
 
 \begin{document}
-
+%\begin{pyblock} 
 %\begin{pyconsole}[][frame=single]
 \begin{pycode}[pycode]
 
@@ -27,7 +16,6 @@ s = np.cos(4 * np.pi * t) + 2
 plt.rc('text', usetex=True)
 #plt.rc('font', family='serif')
 plt.plot(t, s)
-
 plt.xlabel(r'\textbf{time} (s)')
 plt.ylabel(r'\textit{voltage} (mV)',fontsize=16)
 plt.title(r"\TeX\ is Number "
@@ -38,14 +26,15 @@ plt.subplots_adjust(top=0.8)
 
 #save figure
 plt.savefig("myplot.pdf")
+
+print(r"\begin{center}")
+print(r"\includegraphics{myplot.pdf}")
+print(r"\end{center}")
+
+
+
 \end{pycode}
-
 %\end{pyconsole}
-
-
-\begin{center}
-    \includegraphics{myplot.pdf}
-\end{center}
-
+%\end{pyblock}
 
 \end{document}
